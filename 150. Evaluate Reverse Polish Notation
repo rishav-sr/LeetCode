@@ -1,0 +1,45 @@
+class Solution {
+    Stack<String> st= new Stack<>();
+    String ops="+-*/"; int tot=0;
+    public int evalRPN(String[] tokens) {
+        if(tokens.length==1)
+            return Integer.parseInt(tokens[0]);
+        for(int i=0;i<tokens.length;i++)
+        {
+            if(ops.indexOf(tokens[i])==-1)
+            st.push(tokens[i]);
+            else
+            {
+                tot=help(tokens[i]);
+        }
+    }
+        return tot;
+    }
+    
+    public int help(String s)
+    {
+        int a=Integer.parseInt(st.pop());
+         int b=Integer.parseInt(st.pop());
+        int c=0;
+        if(s.equals("+"))
+        {
+            c=a+b;
+        }
+        else if(s.equals("-"))
+        {
+            c=b-a;
+        }
+        else if(s.equals("/"))
+        {
+            c=b/a;
+        }
+                    else
+                    {
+                        c=a*b;
+                    }
+            st.push(Integer.toString(c));
+        return c;
+    }
+}
+
+//used stack as we need to calculate as we get an operand in that order and return the result.
