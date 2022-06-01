@@ -1,0 +1,26 @@
+class Solution {
+    public void rotate(int[] nums, int k) {
+    k=k%nums.length;
+        
+        int f=nums.length-k;
+        help(nums,0,f-1);
+        help(nums,f,nums.length-1);
+        help(nums,0,nums.length-1);
+        
+    }
+    public void help(int arr[],int l,int r)
+    {
+        if(arr.length<=0 ||l==r)
+            return;
+        while(l<r)
+        {
+            arr[l]=arr[l]^arr[r];
+            arr[r]=arr[l]^arr[r];
+            arr[l]=arr[l]^arr[r];
+            l++;r--;
+        }
+    }
+}
+
+//rotate 1st part of array , rotate 2nd part of array, rotate the complete array
+//xor has been used to eliminate use of third variable.
