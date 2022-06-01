@@ -10,14 +10,7 @@ class Solution {
             st.push(tokens[i]);
             else
             {
-                tot=help(tokens[i]);
-        }
-    }
-        return tot;
-    }
-    
-    public int help(String s)
-    {
+               String s=tokens[i]; 
         int a=Integer.parseInt(st.pop());
          int b=Integer.parseInt(st.pop());
         int c=0;
@@ -33,13 +26,14 @@ class Solution {
         {
             c=b/a;
         }
-                    else
-                    {
-                        c=a*b;
-                    }
-            st.push(Integer.toString(c));
-        return c;
+        else
+        {
+            c=a*b;
+        }
+            st.push(Integer.toString(c));               
+        }
+    }
+        return Integer.parseInt(st.pop());
     }
 }
-
-//used stack as we need to calculate as we get an operand in that order and return the result.
+//used stack as we need to calculate as we get an operand in that order and push back and at the end return the result.
